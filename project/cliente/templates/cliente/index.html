@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+    Cliente
+{% endblock titulo %}
+{% block contenido %}
+    <div class="row row-cols-1 row-cols-md-2">
+        {% for cliente in clientes %}
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+                        <p class="card-text text-muted">Nacimiento: {{ cliente.nacimiento }}</p>
+                        {% if cliente.pais_origen_id %}
+                            <p class="card-text">{{ cliente.pais_origen_id }}</p>
+                        {% else %}
+                            <p class="card-text">No registra país de origen.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock contenido %}
